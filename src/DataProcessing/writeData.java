@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class writeData {
 	
-	public static boolean writeExcel(Map<String, double[]> result, List<String> columnNames, String path) throws IOException{
+	public static boolean writeExcel(Map<String, List<Object>> result, List<String> columnNames, String path) throws IOException{
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet ws = wb.createSheet("result");
 		
@@ -35,13 +36,23 @@ public class writeData {
 		for(String name : newRows){
 			cellnum = 0;
 			Row row = ws.createRow(rowCount++);
-			double[] resultdata = result.get(name);
+			List<Object> resultdata = result.get(name);
 			
 			Cell cell = row.createCell(cellnum++);
 			cell.setCellValue(name);
-			for(double data : resultdata){
+			for(Object data : resultdata){
 				cell = row.createCell(cellnum++);
-				cell.setCellValue(data);
+				if(data instanceof String){
+					cell.setCellValue((String)data);
+				}else if(data instanceof Boolean){
+					cell.setCellValue((boolean) data);
+				}else if(data instanceof Date){
+					cell.setCellValue((Date) data);
+				}else if(data instanceof Boolean){
+					cell.setCellValue((boolean) data);
+				}else if(data instanceof Double){
+					cell.setCellValue((Double) data);
+				}
 			}
 		}
 		
