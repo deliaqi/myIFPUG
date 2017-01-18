@@ -1,4 +1,4 @@
-package IFPUGComponent;
+package IFPUG.Component;
 
 public abstract class Component {
 	private String Complexity;//   L/M/H

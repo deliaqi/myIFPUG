@@ -1,4 +1,4 @@
-package IFPUGComponent;
+package IFPUG.Component;
 
 public class EI extends Component{
 	private int FTR;

@@ -1,4 +1,4 @@
-package IFPUGComponent;
+package IFPUG.Component;
 
 public class EIF extends Component{
 	private int RET;

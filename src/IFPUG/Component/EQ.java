@@ -1,20 +1,20 @@
-package IFPUGComponent;
+package IFPUG.Component;
 
-public class EO extends Component{
+public class EQ extends Component{
 	private int FTR;
 	private int TransFunction;
 	
-	public EO(){
+	public EQ(){
 		super();
 	}
-	
-	public EO(String complexity, int weight) {
+
+	public EQ(String complexity, int weight) {
 		super(complexity, weight);
 		TransFunction = weight;
 	}
 	
 	
-	public EO(String complexity, int weight, int number) {
+	public EQ(String complexity, int weight, int number) {
 		super(complexity, weight, number);
 		TransFunction = weight * number;
 	}
