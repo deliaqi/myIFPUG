@@ -52,6 +52,8 @@ public class writeData {
 					cell.setCellValue((boolean) data);
 				}else if(data instanceof Double){
 					cell.setCellValue((Double) data);
+				}else if(data instanceof Integer){
+					cell.setCellValue((Double)data);
 				}
 			}
 		}

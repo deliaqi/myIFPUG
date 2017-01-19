@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -69,20 +70,35 @@ public class readData {
 		int colNum = ws.getRow(0).getLastCellNum();
 		
 		String projectname = "";
+		List<Integer> colUse = new ArrayList<Integer>();
+		colUse.add(0);
+		XSSFRow firstrow = ws.getRow(0);
+		for(int i=0;i<colNum;i++){
+			XSSFCell cell = firstrow.getCell(i);
+			String value = cell.toString();
+			if(value.equals("FP") || value.equals("Function Points") || value.equals("Effort") || value.equals("PointsAdjust")){
+				colUse.add(i);
+			}
+		}
+		
 		
 		for(int i = 1; i <rowNum; i++){
-			double[] data = new double[colNum-1];
+			double[] data = new double[colUse.size()-1];
 			XSSFRow row = ws.getRow(i);
-			for (int j = 0; j < colNum; j++){
-				XSSFCell cell = row.getCell(j);
-				if(j == 0){
+			int index = 0;
+			for(int col : colUse){
+				XSSFCell cell = row.getCell(col);
+				if(col == 0){
 					projectname = row.getCell(0).toString();
 				}else{
-					data[j-1] = cell.getNumericCellValue();
+					data[index++] = Double.parseDouble(cell.toString());
 				}
-				
 			}
-			dataMap.put(projectname, data);	
+			
+			//if(data[0] != 856 && data[0] > 500 && data[0] < 1000){
+				dataMap.put(projectname, data);	
+			//}
+			
 		}
 		
 	}
