@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +16,7 @@ import EffortEstimation.LinearRegression;
 
 public class OriginIFPUG {
 	//public static Map<String, List<Component>> dataMap = new HashMap<String, List<Component>>();
-	public static Map<String, List<Object>> result = new HashMap<String, List<Object>>();
+	public static Map<String, List<Object>> result = new LinkedHashMap<String, List<Object>>();
 	
 	public static void main(String[] args){
 		try {
@@ -27,7 +28,7 @@ public class OriginIFPUG {
 			
 			double[][] FP_Effort = new double[2][ProjectNum];
 			
-			Map<String, double[]> dataMap = new HashMap<String, double[]>();
+			Map<String, double[]> dataMap = new LinkedHashMap<String, double[]>();
 			readData.readDoubleFromExcel(prePath+"dataset_use"+suffix, dataMap);
 			
 			// Caculate Function Point before adjustment
