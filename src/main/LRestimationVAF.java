@@ -14,7 +14,7 @@ public class LRestimationVAF {
 		// TODO Auto-generated method stub
 		
 		int FP = 0;
-		String prePath = "C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\Promise\\";
+		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Promise\\";
 		String suffix = ".xlsx";
 		
 		

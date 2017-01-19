@@ -14,7 +14,7 @@ public class LRestimation {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		int FP = 0;
-		String prePath = "C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\ISBSG\\";
+		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\";
 		String suffix = ".xlsx";
 		
 		

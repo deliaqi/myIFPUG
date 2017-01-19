@@ -54,7 +54,7 @@ public class cleanData {
 		for(String col : targetdata.keySet()){
 			columnNames.add(col);
 		}
-		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\ISBSG\\clean.xlsx");
+		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\clean.xlsx");
 		
 		
 		
@@ -105,7 +105,7 @@ public class cleanData {
 		for(String col : targetdata.keySet()){
 			columnNames.add(col);
 		}
-		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\Promise\\clean.xlsx");
+		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Promise\\clean.xlsx");
 		
 		
 		
@@ -124,7 +124,7 @@ public class cleanData {
 		targetData.put("PointsAdjust", new String[]{});
 		targetData.put("Effort", new String[]{});
 		
-		cleanPromise("C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\Promise\\desharnais.xlsx", targetData);
+		cleanPromise("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Promise\\desharnais.xlsx", targetData);
 	}
 
 }
