@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,38 +21,45 @@ import IFPUG.Component.*;
 
 public class readData {
 	
-	public static double readILFfromExcel(String path, List<Component> CList, int[][] table) throws IOException{
+	public static double readDataFilefromExcel(String path, List<Component> CList, int[][] table) throws IOException{
 		FileInputStream fis = new FileInputStream(path);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		XSSFSheet ws = wb.getSheetAt(0);
 		
 		int rowNum = ws.getLastRowNum() + 1;
 		int colNum = ws.getRow(0).getLastCellNum();
-		
-		String[] pathstr = path.split("ILF.xlsx");
-		String prePath = pathstr[0];
+		int index = path.indexOf(".");
+		String prePath = path.substring(0, index-3);
+		String ComponentType = path.substring(index-3, index);
 		
 		for(int i = 1; i <rowNum; i++){
 			XSSFRow row = ws.getRow(i);
-			ILF curILF = new ILF();;
 			XSSFCell cell = row.getCell(1);
 			String name = cell.toString();
 			
-			int curRET = 0,curDET = 0;
-			readILFDetailfromExcel(prePath+name+".xlsx", curRET, curDET);
+			Map<String, Integer> result = new HashMap<String, Integer>();
+			readDFDetailfromExcel(prePath+name+".xlsx", result);
+			int curDET = result.get("DET");
+			int curRET = result.get("RET");
 			
-			XSSFCell newcell = row.createCell(3);
+			XSSFCell newcell = row.createCell(2);
 			newcell.setCellValue(curDET);
-			newcell = row.createCell(4);
+			newcell = row.createCell(3);
 			newcell.setCellValue(curRET);
 			
-			curILF.computeComplexity(table);
-			CList.add(curILF);			
+			Component curComponent = new ILF();
+			if(ComponentType.equals("EIF")){
+				curComponent = new EIF();
+			}
+			curComponent.setDET(curDET);
+			curComponent.setRET(curRET);
+			curComponent.computeComplexity(table);
+			CList.add(curComponent);			
 			
+			newcell = row.createCell(4);
+			newcell.setCellValue(curComponent.getComplexity());
 			newcell = row.createCell(5);
-			newcell.setCellValue(curILF.getComplexity());
-			newcell = row.createCell(6);
-			newcell.setCellValue(curILF.getDataFunction());
+			newcell.setCellValue(curComponent.getFunctionPoint());
 		}
 		
 		fis.close();
@@ -64,19 +72,28 @@ public class readData {
 		
 	}
 	
-	public static boolean readILFDetailfromExcel(String path, int RET, int DET) throws IOException{
+	public static boolean readDFDetailfromExcel(String path, Map<String, Integer> result) throws IOException{
 		File excel = new File(path);
 		FileInputStream fis = new FileInputStream(excel);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		
-		RET = wb.getNumberOfSheets();
-		DET = 0;
+		int RET = 0;
+		int DET = 0;
 		
-		for(int i=0;i<RET;i++){
+		for(int i=0;i<wb.getNumberOfSheets();i++){
 			XSSFSheet ws = wb.getSheetAt(i);
-			DET =+ ws.getLastRowNum();
+			int tmp = ws.getLastRowNum();
+			if(tmp > 0){
+				DET = DET + ws.getLastRowNum();
+				RET++;
+			}else{
+				break;
+			}
+			
 		}
 		
+		result.put("DET", DET);
+		result.put("RET", RET);
 		return true;
 	}
 	

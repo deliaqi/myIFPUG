@@ -49,6 +49,16 @@ public abstract class Component {
 	public int getFunctionPoint(){
 		return Weight * Number;
 	}
+
+	public void setRET(int RET) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void computeComplexity(int[][] table) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

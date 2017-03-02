@@ -60,7 +60,7 @@ public class COCOMO2 {
 			usefulData.put(i+"", curUSE);
 		}
 		
-		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\COCOMOII\\cocomonasa.xlsx");
+		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Cocomo\\cocomonasa_result.xlsx");
 		
 	}
 	

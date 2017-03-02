@@ -26,9 +26,6 @@ public class ILF extends Component{
 	}
 
 	public int getDataFunction() {
-		if(DataFunction == 0){
-			DataFunction = Weight * Number;
-		}
 		return DataFunction;
 	}
 
@@ -43,19 +40,19 @@ public class ILF extends Component{
 		   (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
 		   (DET < table[0][1] && RET >= table[1][2])){
 			Complexity = "M";
-			Weight = table[2][1];
+			Weight = table[3][1];
 		}else if((DET < table[0][1] && RET < table[1][1]) || 
 		   (DET >= table[0][1] && DET < table[0][2] && RET < table[1][1]) ||
 		   (DET < table[0][1] && RET >= table[1][1] && RET < table[1][2])){
 			Complexity = "L";
-			Weight = table[2][0];
+			Weight = table[3][0];
 //		}else if((DET >= table[0][2] && RET < table[1][0]) || 
 //				 (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
 //				 (DET < table[0][1] && RET >= table[1][2])){
 //			
 		}else{
 			Complexity = "H";
-			Weight = table[2][2];
+			Weight = table[3][2];
 		}
 		
 		DataFunction = Number * Weight;
