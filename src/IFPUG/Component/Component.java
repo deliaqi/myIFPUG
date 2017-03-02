@@ -1,10 +1,10 @@
 package IFPUG.Component;
 
 public abstract class Component {
-	private String Complexity;//   L/M/H
-	private int Weight;
-	private int Number=1;
-	private int DET;
+	protected String Complexity;//   L/M/H
+	protected int Weight;
+	protected int Number=1;
+	protected int DET;
 	//private int FunctionPoint;
 	
 	public Component() {

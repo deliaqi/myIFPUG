@@ -3,6 +3,7 @@ package DataProcessing;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,6 +19,66 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import IFPUG.Component.*;
 
 public class readData {
+	
+	public static double readILFfromExcel(String path, List<Component> CList, int[][] table) throws IOException{
+		FileInputStream fis = new FileInputStream(path);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet ws = wb.getSheetAt(0);
+		
+		int rowNum = ws.getLastRowNum() + 1;
+		int colNum = ws.getRow(0).getLastCellNum();
+		
+		String[] pathstr = path.split("ILF.xlsx");
+		String prePath = pathstr[0];
+		
+		for(int i = 1; i <rowNum; i++){
+			XSSFRow row = ws.getRow(i);
+			ILF curILF = new ILF();;
+			XSSFCell cell = row.getCell(1);
+			String name = cell.toString();
+			
+			int curRET = 0,curDET = 0;
+			readILFDetailfromExcel(prePath+name+".xlsx", curRET, curDET);
+			
+			XSSFCell newcell = row.createCell(3);
+			newcell.setCellValue(curDET);
+			newcell = row.createCell(4);
+			newcell.setCellValue(curRET);
+			
+			curILF.computeComplexity(table);
+			CList.add(curILF);			
+			
+			newcell = row.createCell(5);
+			newcell.setCellValue(curILF.getComplexity());
+			newcell = row.createCell(6);
+			newcell.setCellValue(curILF.getDataFunction());
+		}
+		
+		fis.close();
+		
+		FileOutputStream fos = new FileOutputStream(path);
+		wb.write(fos);
+		fos.close();
+		
+		return 0;
+		
+	}
+	
+	public static boolean readILFDetailfromExcel(String path, int RET, int DET) throws IOException{
+		File excel = new File(path);
+		FileInputStream fis = new FileInputStream(excel);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		
+		RET = wb.getNumberOfSheets();
+		DET = 0;
+		
+		for(int i=0;i<RET;i++){
+			XSSFSheet ws = wb.getSheetAt(i);
+			DET =+ ws.getLastRowNum();
+		}
+		
+		return true;
+	}
 	
 	public static boolean readComponentfromExcel(String path, List<Component> CList) throws IOException
 	{
@@ -95,9 +156,9 @@ public class readData {
 				}
 			}
 			
-			//if(data[0] != 856 && data[0] > 500 && data[0] < 1000){
+			if(data[0] != 856 && data[0] > 500 && data[0] < 1000){
 				dataMap.put(projectname, data);	
-			//}
+			}
 			
 		}
 		
@@ -116,7 +177,7 @@ public class readData {
 			XSSFRow row = ws.getRow(i);
 			for (int j = 0; j < colNum; j++){
 				XSSFCell cell = row.getCell(j);
-				String value = cell.toString();
+				//String value = cell.toString();
 				data[i][j] = cell.toString();	
 			}
 		}
