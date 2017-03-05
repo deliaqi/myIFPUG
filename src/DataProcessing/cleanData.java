@@ -115,9 +115,11 @@ public class cleanData {
 		Map<String, String[]> targetData = new LinkedHashMap<String, String[]>();
 		targetData.put("Function Points", new String[]{});
 		targetData.put("Development Type", new String[]{"New Development"});
-		//targetData.put("Development Platform", new String[]{"PC"});
+		targetData.put("Development Platform", new String[]{"MF"});
 		targetData.put("Language Type", new String[]{"3GL"});
-		//targetData.put("DBMS Used", new String[]{"Yes"});
+		targetData.put("DBMS Used", new String[]{});
+		targetData.put("Organisation type", new String[]{});
+		targetData.put("How Methodology Acquired", new String[]{});
 		targetData.put("Effort", new String[]{});
 		
 		cleanISBSG("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\IFPUG4.xlsx", targetData);
