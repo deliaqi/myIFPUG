@@ -2,16 +2,13 @@ package DataProcessing;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -181,7 +178,7 @@ public class readData {
 		
 	}
 	
-	public static String[][] readDataFromExcel(String path) throws IOException{
+	public static String[][] readStringFromExcel(String path) throws IOException{
 		File excel = new File(path);
 		FileInputStream fis = new FileInputStream(excel);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -189,6 +186,26 @@ public class readData {
 		int rowNum = ws.getLastRowNum() + 1;
 		int colNum = ws.getRow(0).getLastCellNum();
 		String[][] data = new String[rowNum][colNum];
+		
+		for(int i = 0; i <rowNum; i++){
+			XSSFRow row = ws.getRow(i);
+			for (int j = 0; j < colNum; j++){
+				XSSFCell cell = row.getCell(j);
+				//String value = cell.toString();
+				data[i][j] = cell.toString();	
+			}
+		}
+		return data;
+	}
+	
+	public static Object[][] readObjectFromExcel(String path) throws IOException{
+		File excel = new File(path);
+		FileInputStream fis = new FileInputStream(excel);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet ws = wb.getSheetAt(0);
+		int rowNum = ws.getLastRowNum() + 1;
+		int colNum = ws.getRow(0).getLastCellNum();
+		Object[][] data = new Object[rowNum][colNum];
 		
 		for(int i = 0; i <rowNum; i++){
 			XSSFRow row = ws.getRow(i);

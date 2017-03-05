@@ -15,7 +15,7 @@ public class COCOMO2 {
 	public static double A = 2.94;// for COCOMO II.2000
 	
 	public static void process(String path) throws IOException{
-		String data[][] = readData.readDataFromExcel(path);
+		String data[][] = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		Map<String, List<Object>> usefulData = new LinkedHashMap<String, List<Object>>();
@@ -75,7 +75,7 @@ public class COCOMO2 {
 	
 	public static Map<String, List<Double>> readEMValue(String path) throws IOException{
 		Map<String, List<Double>> EMTable = new LinkedHashMap<String, List<Double>>();
-		String data[][] = readData.readDataFromExcel(path);
+		String data[][] = readData.readStringFromExcel(path);
 		for(int i=1;i<data.length;i++){
 			String[] curdata = data[i];
 			String curEM = curdata[0];

@@ -10,7 +10,7 @@ import java.util.Map;
 public class cleanData {
 	
 	public static void cleanISBSG(String path,Map<String, String[]> targetdata) throws IOException{
-		String[][] data = readData.readDataFromExcel(path);
+		String[][] data = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		// Find target columns and rows
@@ -61,7 +61,7 @@ public class cleanData {
 	}
 	
 	public static void cleanPromise(String path,Map<String, String[]> targetdata) throws IOException{
-		String[][] data = readData.readDataFromExcel(path);
+		String[][] data = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		// Find target columns and rows
