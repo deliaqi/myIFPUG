@@ -19,7 +19,7 @@ public class LRestimation {
 		
 		
 		Map<String, double[]> dataMap = new LinkedHashMap<String, double[]>();
-		readData.readDoubleFromExcel(prePath+"clean"+suffix, dataMap);
+		readData.readDoubleFromExcel(prePath+"clean_DT_LT"+suffix, dataMap);
 		//System.out.println(dataMap.size());
 		
 		// Prepare Array contains FP and Effort data

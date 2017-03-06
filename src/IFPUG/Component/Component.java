@@ -1,10 +1,10 @@
 package IFPUG.Component;
 
 public abstract class Component {
-	private String Complexity;//   L/M/H
-	private int Weight;
-	private int Number=1;
-	private int DET;
+	protected String Complexity;//   L/M/H
+	protected int Weight;
+	protected int Number=1;
+	protected int DET;
 	//private int FunctionPoint;
 	
 	public Component() {
@@ -48,6 +48,16 @@ public abstract class Component {
 	
 	public int getFunctionPoint(){
 		return Weight * Number;
+	}
+
+	public void setRET(int RET) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void computeComplexity(int[][] table) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

@@ -31,8 +31,8 @@ public class LRestimationVAF {
 		SimpleRegression simpleRegression = new SimpleRegression(true);
 		simpleRegression.addData(FP_Effort);
 		
-		double sample = 234;
-		double realEffort = 2149;
+		double sample = 452;
+		double realEffort = 3948;
 		double prediction = simpleRegression.predict(sample);
 		
 		System.out.println("slope="+simpleRegression.getSlope());

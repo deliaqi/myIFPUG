@@ -33,5 +33,29 @@ public class ILF extends Component{
 		DataFunction = dataFunction;
 	}
 	
+	// int[][] DataComplexity = 
+	//{{1,20,51},{1,2,6},{5,7,15},{7,10,10}};
+	public void computeComplexity(int[][] table){
+		if((DET >= table[0][2] && RET < table[1][0]) || 
+		   (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
+		   (DET < table[0][1] && RET >= table[1][2])){
+			Complexity = "M";
+			Weight = table[3][1];
+		}else if((DET < table[0][1] && RET < table[1][1]) || 
+		   (DET >= table[0][1] && DET < table[0][2] && RET < table[1][1]) ||
+		   (DET < table[0][1] && RET >= table[1][1] && RET < table[1][2])){
+			Complexity = "L";
+			Weight = table[3][0];
+//		}else if((DET >= table[0][2] && RET < table[1][0]) || 
+//				 (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
+//				 (DET < table[0][1] && RET >= table[1][2])){
+//			
+		}else{
+			Complexity = "H";
+			Weight = table[3][2];
+		}
+		
+		DataFunction = Number * Weight;
+	}
 	
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 public class cleanData {
 	
 	public static void cleanISBSG(String path,Map<String, String[]> targetdata) throws IOException{
-		String[][] data = readData.readDataFromExcel(path);
+		String[][] data = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		// Find target columns and rows
@@ -54,14 +54,14 @@ public class cleanData {
 		for(String col : targetdata.keySet()){
 			columnNames.add(col);
 		}
-		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\clean.xlsx");
+		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\clean_DT_LT.xlsx");
 		
 		
 		
 	}
 	
 	public static void cleanPromise(String path,Map<String, String[]> targetdata) throws IOException{
-		String[][] data = readData.readDataFromExcel(path);
+		String[][] data = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		// Find target columns and rows
@@ -112,19 +112,23 @@ public class cleanData {
 	}
 	
 	public static void main(String[] args) throws IOException{
-//		Map<String, String[]> targetData = new LinkedHashMap<String, String[]>();
-//		targetData.put("Function Points", new String[]{});
-//		targetData.put("Development Type", new String[]{"New Development"});
-//		targetData.put("Development Platform", new String[]{"PC"});
-//		targetData.put("Effort", new String[]{});
-//		
-//		cleanISBSG("C:\\Users\\LIUJF\\Documents\\SCHOOL\\FPA\\dataset\\ISBSG\\IFPUG4.xlsx", targetData);
-		
 		Map<String, String[]> targetData = new LinkedHashMap<String, String[]>();
-		targetData.put("PointsAdjust", new String[]{});
+		targetData.put("Function Points", new String[]{});
+		targetData.put("Development Type", new String[]{"New Development"});
+		targetData.put("Development Platform", new String[]{"MF"});
+		targetData.put("Language Type", new String[]{"3GL"});
+		targetData.put("DBMS Used", new String[]{});
+		targetData.put("Organisation type", new String[]{});
+		targetData.put("How Methodology Acquired", new String[]{});
 		targetData.put("Effort", new String[]{});
 		
-		cleanPromise("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Promise\\desharnais.xlsx", targetData);
+		cleanISBSG("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\IFPUG4.xlsx", targetData);
+		
+//		Map<String, String[]> targetData = new LinkedHashMap<String, String[]>();
+//		targetData.put("PointsAdjust", new String[]{});
+//		targetData.put("Effort", new String[]{});
+//		
+//		cleanPromise("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Promise\\desharnais.xlsx", targetData);
 	}
 
 }

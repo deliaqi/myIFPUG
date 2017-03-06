@@ -33,6 +33,29 @@ public class EIF extends Component{
 		DataFunction = dataFunction;
 	}
 	
+	public void computeComplexity(int[][] table){
+		if((DET >= table[0][2] && RET < table[1][0]) || 
+		   (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
+		   (DET < table[0][1] && RET >= table[1][2])){
+			Complexity = "M";
+			Weight = table[2][1];
+		}else if((DET < table[0][1] && RET < table[1][1]) || 
+		   (DET >= table[0][1] && DET < table[0][2] && RET < table[1][1]) ||
+		   (DET < table[0][1] && RET >= table[1][1] && RET < table[1][2])){
+			Complexity = "L";
+			Weight = table[2][0];
+//		}else if((DET >= table[0][2] && RET < table[1][0]) || 
+//				 (DET >= table[0][1] && DET < table[0][2] && RET >= table[1][1] && RET < table[1][2]) ||
+//				 (DET < table[0][1] && RET >= table[1][2])){
+//			
+		}else{
+			Complexity = "H";
+			Weight = table[2][2];
+		}
+		
+		DataFunction = Number * Weight;
+	}
+	
 	
 
 }

@@ -2,14 +2,13 @@ package DataProcessing;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,6 +17,82 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import IFPUG.Component.*;
 
 public class readData {
+	
+	public static double readDataFilefromExcel(String path, List<Component> CList, int[][] table) throws IOException{
+		FileInputStream fis = new FileInputStream(path);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet ws = wb.getSheetAt(0);
+		
+		int rowNum = ws.getLastRowNum() + 1;
+		int colNum = ws.getRow(0).getLastCellNum();
+		int index = path.indexOf(".");
+		String prePath = path.substring(0, index-3);
+		String ComponentType = path.substring(index-3, index);
+		
+		for(int i = 1; i <rowNum; i++){
+			XSSFRow row = ws.getRow(i);
+			XSSFCell cell = row.getCell(1);
+			String name = cell.toString();
+			
+			Map<String, Integer> result = new HashMap<String, Integer>();
+			readDFDetailfromExcel(prePath+name+".xlsx", result);
+			int curDET = result.get("DET");
+			int curRET = result.get("RET");
+			
+			XSSFCell newcell = row.createCell(2);
+			newcell.setCellValue(curDET);
+			newcell = row.createCell(3);
+			newcell.setCellValue(curRET);
+			
+			Component curComponent = new ILF();
+			if(ComponentType.equals("EIF")){
+				curComponent = new EIF();
+			}
+			curComponent.setDET(curDET);
+			curComponent.setRET(curRET);
+			curComponent.computeComplexity(table);
+			CList.add(curComponent);			
+			
+			newcell = row.createCell(4);
+			newcell.setCellValue(curComponent.getComplexity());
+			newcell = row.createCell(5);
+			newcell.setCellValue(curComponent.getFunctionPoint());
+		}
+		
+		fis.close();
+		
+		FileOutputStream fos = new FileOutputStream(path);
+		wb.write(fos);
+		fos.close();
+		
+		return 0;
+		
+	}
+	
+	public static boolean readDFDetailfromExcel(String path, Map<String, Integer> result) throws IOException{
+		File excel = new File(path);
+		FileInputStream fis = new FileInputStream(excel);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		
+		int RET = 0;
+		int DET = 0;
+		
+		for(int i=0;i<wb.getNumberOfSheets();i++){
+			XSSFSheet ws = wb.getSheetAt(i);
+			int tmp = ws.getLastRowNum();
+			if(tmp > 0){
+				DET = DET + ws.getLastRowNum();
+				RET++;
+			}else{
+				break;
+			}
+			
+		}
+		
+		result.put("DET", DET);
+		result.put("RET", RET);
+		return true;
+	}
 	
 	public static boolean readComponentfromExcel(String path, List<Component> CList) throws IOException
 	{
@@ -95,15 +170,15 @@ public class readData {
 				}
 			}
 			
-			//if(data[0] != 856 && data[0] > 500 && data[0] < 1000){
+			if(data[0] != 856 && data[0] > 500 && data[0] < 1000){
 				dataMap.put(projectname, data);	
-			//}
+			}
 			
 		}
 		
 	}
 	
-	public static String[][] readDataFromExcel(String path) throws IOException{
+	public static String[][] readStringFromExcel(String path) throws IOException{
 		File excel = new File(path);
 		FileInputStream fis = new FileInputStream(excel);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -116,7 +191,27 @@ public class readData {
 			XSSFRow row = ws.getRow(i);
 			for (int j = 0; j < colNum; j++){
 				XSSFCell cell = row.getCell(j);
-				String value = cell.toString();
+				//String value = cell.toString();
+				data[i][j] = cell.toString();	
+			}
+		}
+		return data;
+	}
+	
+	public static Object[][] readObjectFromExcel(String path) throws IOException{
+		File excel = new File(path);
+		FileInputStream fis = new FileInputStream(excel);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet ws = wb.getSheetAt(0);
+		int rowNum = ws.getLastRowNum() + 1;
+		int colNum = ws.getRow(0).getLastCellNum();
+		Object[][] data = new Object[rowNum][colNum];
+		
+		for(int i = 0; i <rowNum; i++){
+			XSSFRow row = ws.getRow(i);
+			for (int j = 0; j < colNum; j++){
+				XSSFCell cell = row.getCell(j);
+				//String value = cell.toString();
 				data[i][j] = cell.toString();	
 			}
 		}
