@@ -10,6 +10,9 @@ public class EvaluateMRE {
 	private double[] MREs;
 	private double MMRE;
 	private double MdMRE;
+	private double Pred;
+	
+	private static double PredAccuracy = 0.25;
 	
 	public EvaluateMRE(List<MRE> listMRE) {
 		super();
@@ -17,6 +20,7 @@ public class EvaluateMRE {
 		this.initMREs(listMRE);
 		this.caculateMMRE(MREs);
 		this.caculateMdMRE(MREs);
+		this.caculatePred(MREs, PredAccuracy);
 	}
 	
 	public void initMREs(List<MRE> listMRE){
@@ -42,6 +46,19 @@ public class EvaluateMRE {
 		Median median = new Median();
 		MdMRE = median.evaluate(MREs);
 		return MdMRE;
+	}
+	
+	public double caculatePred(double[] MREs, double accuracy){
+		int size = MREs.length;
+		int num = 0;
+		for(int i=0; i<size; i++){
+			if(MREs[i] <= accuracy){
+				num++;
+			}
+		}
+		
+		Pred = (double)num/size;
+		return Pred;
 	}
 
 	public double[] getMREs() {
@@ -74,6 +91,22 @@ public class EvaluateMRE {
 
 	public void setMdMRE(double mdMRE) {
 		MdMRE = mdMRE;
+	}
+
+	public double getPred() {
+		return Pred;
+	}
+
+	public static double getPredAccuracy() {
+		return PredAccuracy;
+	}
+
+	public void setPred(double pred) {
+		Pred = pred;
+	}
+
+	public static void setPredAccuracy(double predAccuracy) {
+		PredAccuracy = predAccuracy;
 	}
 
 }

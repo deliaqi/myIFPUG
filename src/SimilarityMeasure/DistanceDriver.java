@@ -1,5 +1,6 @@
 package SimilarityMeasure;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,23 @@ public class DistanceDriver {
 	private Map<String, List<Object>> Analogues;
 	private Map<String, Double> Distances;
 	
-	public DistanceDriver(){
-		
+	private static Map<String, List<Object>> ProjectData;
+	private static int DataSize;
+	private static int FeatureLength;
+	
+	private String PredictedName;
+	private String CAName;
+	
+	
+	
+	// Using GA to adjust weight
+	private double[] Weights;
+	
+	public DistanceDriver(Map<String, List<Object>> projectdata){
+		ProjectData = projectdata;
+		DataSize = ProjectData.size();
+		InitializeWeights();
+		FeatureLength = Weights.length;
 	}
 	
 	public DistanceDriver(List<Object> predicted,
@@ -19,10 +35,43 @@ public class DistanceDriver {
 		super();
 		this.Predicted = predicted;
 		this.Analogues = dataset;
+		InitializeWeights();
+		FeatureLength = Weights.length;
+	}
+	
+	public void InitializeWeights(int size){
+		Weights = new double[size];
+		for(int i=0; i<size; i++){
+			Weights[i] = 1;
+		}
+	}
+	
+	public void InitializeWeights(){
+		if(ProjectData != null){
+			Map.Entry<String, List<Object>> entry = ProjectData.entrySet().iterator().next();
+			List<Object> tmp = entry.getValue();
+			InitializeWeights(tmp.size()-1);
+		}else if(Predicted != null && Predicted.size() > 1){
+			InitializeWeights(Predicted.size()-1);
+		}else{
+			System.out.println("Initializing Weights failed!");
+		}
+	}
+	
+	public void TrainWeights(){
+		GADriver GAdriver = new GADriver(this);
+		GAdriver.process(Weights);
+	}
+	
+	public double getActualEffort(){
+		if(Predicted.get(FeatureLength) instanceof Double){
+			return (double)Predicted.get(FeatureLength);
+		}
+		return 0;
 	}
 
 	public Map<String, Double> process(){
-		double[][] distances = new double[Analogues.size()][]; 
+		double[][] distances = new double[Analogues.size()][];
 		int index = 0;
 		for(String analogue : Analogues.keySet()){
 			EuclidianDistance ED = new EuclidianDistance(Predicted, Analogues.get(analogue));
@@ -34,11 +83,68 @@ public class DistanceDriver {
 		for(String analogue : Analogues.keySet()){
 			double sum = 0;
 			for(int i=0;i<distances[index].length;i++){
-				sum = sum + distances[index][i];
+				sum = sum + Weights[i] * distances[index][i];
 			}
 			Distances.put(analogue, Math.sqrt(sum));
 			index++;
 		}
+		
+		CAName = getMinDistance();
+		
+		return Distances;
+		
+	}
+	
+	public Map<String, Double> process(String predictedName){
+		double[][] distances = new double[DataSize-1][];
+		
+		Predicted = ProjectData.get(predictedName);
+		Analogues = new LinkedHashMap<String, List<Object>>(ProjectData);
+		Analogues.remove(predictedName);
+		
+		int index = 0;
+		for(String analogue : Analogues.keySet()){
+			EuclidianDistance ED = new EuclidianDistance(Predicted, Analogues.get(analogue));
+			distances[index++] = ED.getDistance();
+		}
+		distances = normalizeDistance(distances);
+		Distances = new LinkedHashMap<String, Double>();
+		index = 0;
+		for(String analogue : Analogues.keySet()){
+			double sum = 0;
+			for(int i=0;i<distances[index].length;i++){
+				sum = sum + Weights[i] * distances[index][i];
+			}
+			Distances.put(analogue, Math.sqrt(sum));
+			index++;
+		}
+		
+		CAName = getMinDistance();
+		
+		return Distances;
+		
+	}
+	
+	public Map<String, Double> process(double[] Weights){
+		double[][] distances = new double[Analogues.size()][];
+		int index = 0;
+		for(String analogue : Analogues.keySet()){
+			EuclidianDistance ED = new EuclidianDistance(Predicted, Analogues.get(analogue));
+			distances[index++] = ED.getDistance();
+		}
+		distances = normalizeDistance(distances);
+		Distances = new LinkedHashMap<String, Double>();
+		index = 0;
+		for(String analogue : Analogues.keySet()){
+			double sum = 0;
+			for(int i=0;i<distances[index].length;i++){
+				sum = sum + Weights[i] * distances[index][i];
+			}
+			Distances.put(analogue, Math.sqrt(sum));
+			index++;
+		}
+		
+		CAName = getMinDistance();
 		
 		return Distances;
 		
@@ -99,17 +205,42 @@ public class DistanceDriver {
 		return Name;
 	}
 	
+	public double getCAEffort(){
+		if(CAName == null || CAName == "") return 0;
+		List<Object> data = Analogues.get(CAName);
+		if(data.size() > 0){
+			Object tmp = Analogues.get(CAName).get(FeatureLength);
+			if(tmp instanceof Double){
+				return (double)tmp;
+			}
+		}
+		return 0;
+	}
+	
+	public List<Object> getCAdata(){
+		if(CAName == null || CAName == "") return null;
+		return Analogues.get(CAName);
+	}
+	
+	public double[] getWeights(){
+		return Weights;
+	}
+	
 	public List<Object> getPredicted() {
 		return Predicted;
 	}
 
-
-
-	public Map<String, List<Object>> getDataset() {
-		return Analogues;
+	public int getFeatureLength(){
+		return FeatureLength;
 	}
 
+	public Map<String, List<Object>> getDataset() {
+		return ProjectData;
+	}
 
+	public void setWeights(double[] weights){
+		Weights = weights;
+	}
 
 	public void setPredicted(List<Object> predicted) {
 		this.Predicted = predicted;

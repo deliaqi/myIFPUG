@@ -18,7 +18,8 @@ public class testDriver {
 		// for Reading Data
 		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\";
 		String suffix = ".xlsx";
-		String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
+		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
+		String[][] data = readData.readStringFromExcel(prePath+"IFPUG4"+suffix);
 		String[] titles = data[0];
 		
 		// for Evaluation
@@ -36,8 +37,7 @@ public class testDriver {
 		for(int i=1;i<rowNum;i++){
 			String curName = data[i][0];
 			List<Object> curData = new ArrayList<Object>();
-			for(int j=1;j<colNum-1;j++){
-				//Double possibleDouble;
+			for(int j=1;j<colNum;j++){
 				try{
 					curData.add(Double.parseDouble(data[i][j]));
 				}catch(NumberFormatException e){
@@ -53,9 +53,15 @@ public class testDriver {
 			List<Object> Predicted = data4Similarity.get(name);
 			Map<String, List<Object>> Analogues = new LinkedHashMap<String, List<Object>>(data4Similarity);
 			Analogues.remove(name);
-			DistanceDriver disDriver = new DistanceDriver(Predicted, Analogues);
-			Map<String, Double> Distances = disDriver.process();
-			String CAname = disDriver.getMinDistance();
+			DistanceDriver estimateDriver = new DistanceDriver(Predicted, Analogues);
+			DistanceDriver trainDriver = new DistanceDriver(data4Similarity);
+			
+			// using GA to train Weights of each features for Similarity Measure
+			trainDriver.TrainWeights();
+			
+			estimateDriver.setWeights(trainDriver.getWeights());
+			Map<String, Double> Distances = estimateDriver.process();
+			String CAname = estimateDriver.getMinDistance();
 			double CAdistance = Distances.get(CAname);
 			
 			// Estimation
