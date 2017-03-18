@@ -3,6 +3,8 @@ package SimilarityMeasure.GA;
 public class Population {
 
 	Individual[] individuals;
+	double BestFitness;
+	Individual Fittest;
 
 	/*
 	 * Constructors
@@ -26,13 +28,28 @@ public class Population {
 	}
 	
 	public Individual getFittest(){
-		Individual fittest = individuals[0];
-		for(int i=0; i<size(); i++){
-			if(fittest.getFitness() <= getIndividual(i).getFitness()){
-				fittest = getIndividual(i);
+		if(Fittest == null){
+			Individual fittest = individuals[0];
+			double bestFitness = fittest.getFitness();
+			for(int i=1; i<size(); i++){
+				if(bestFitness <= getIndividual(i).getFitness()){
+					fittest = getIndividual(i);
+					bestFitness = getIndividual(i).getFitness();
+				}
 			}
+			BestFitness = bestFitness;
+			Fittest = fittest;
 		}
-		return fittest;
+		
+		return Fittest;
+	}
+	
+	public double getBestFitness(){
+		if(BestFitness >= 0){
+			return getFittest().getFitness();
+		}else{
+			return BestFitness;
+		}
 	}
 
 	/* Public methods */

@@ -57,7 +57,7 @@ public class EvaluateMRE {
 			}
 		}
 		
-		Pred = num/size;
+		Pred = (double)num/size;
 		return Pred;
 	}
 

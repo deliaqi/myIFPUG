@@ -18,7 +18,8 @@ public class testDriver {
 		// for Reading Data
 		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\";
 		String suffix = ".xlsx";
-		String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
+		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
+		String[][] data = readData.readStringFromExcel(prePath+"IFPUG4"+suffix);
 		String[] titles = data[0];
 		
 		// for Evaluation

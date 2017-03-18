@@ -5,6 +5,7 @@ import java.util.Map;
 
 import SimilarityMeasure.GA.Algorithm;
 import SimilarityMeasure.GA.FitnessCalc;
+import SimilarityMeasure.GA.Individual;
 import SimilarityMeasure.GA.Population;
 
 public class GADriver {
@@ -20,6 +21,7 @@ public class GADriver {
 	public void process(double[] rawWeights) {
 		// Set a candidate solution
 		FitnessCalc.setDistanceDriver(distanceDriver);
+		Individual.setDefaultGeneLength(distanceDriver.getFeatureLength());
 
 		// Create an initial population
 		Population myPop = new Population(50, true);
@@ -28,7 +30,7 @@ public class GADriver {
 		int generationCount = 0;
 		while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness()) {
 			generationCount++;
-			System.out.println("Generation: " + generationCount + " Fittest: " + myPop.getFittest().getFitness());
+			System.out.println("Generation: " + generationCount + " Fittest: " + myPop.getBestFitness());
 			myPop = Algorithm.evolvePopulation(myPop);
 		}
 		System.out.println("Solution found!");

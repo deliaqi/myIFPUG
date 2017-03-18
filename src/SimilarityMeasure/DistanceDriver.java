@@ -1,5 +1,6 @@
 package SimilarityMeasure;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class DistanceDriver {
 	public DistanceDriver(Map<String, List<Object>> projectdata){
 		ProjectData = projectdata;
 		DataSize = ProjectData.size();
+		InitializeWeights();
+		FeatureLength = Weights.length;
 	}
 	
 	public DistanceDriver(List<Object> predicted,
@@ -32,8 +35,8 @@ public class DistanceDriver {
 		super();
 		this.Predicted = predicted;
 		this.Analogues = dataset;
-		FeatureLength = predicted.size();
 		InitializeWeights();
+		FeatureLength = Weights.length;
 	}
 	
 	public void InitializeWeights(int size){
@@ -44,12 +47,14 @@ public class DistanceDriver {
 	}
 	
 	public void InitializeWeights(){
-		int size = Predicted.size()-1;
-		if(size <= 0){
-			System.out.println("Initializing Weights failed!");
-			return;
-		}else{
+		if(ProjectData != null){
+			Map.Entry<String, List<Object>> entry = ProjectData.entrySet().iterator().next();
+			List<Object> tmp = entry.getValue();
+			InitializeWeights(tmp.size()-1);
+		}else if(Predicted != null && Predicted.size() > 1){
 			InitializeWeights(Predicted.size()-1);
+		}else{
+			System.out.println("Initializing Weights failed!");
 		}
 	}
 	
@@ -59,11 +64,8 @@ public class DistanceDriver {
 	}
 	
 	public double getActualEffort(){
-		int featureNum = Predicted.size()-1;
-		if(featureNum >= 0){
-			if(Predicted.get(featureNum) instanceof Double){
-				return (double)Predicted.get(featureNum);
-			}
+		if(Predicted.get(FeatureLength) instanceof Double){
+			return (double)Predicted.get(FeatureLength);
 		}
 		return 0;
 	}
@@ -96,8 +98,8 @@ public class DistanceDriver {
 	public Map<String, Double> process(String predictedName){
 		double[][] distances = new double[DataSize-1][];
 		
-		List<Object> Predicted = ProjectData.get(predictedName);
-		Map<String, List<Object>> Analogues = new LinkedHashMap<String, List<Object>>(ProjectData);
+		Predicted = ProjectData.get(predictedName);
+		Analogues = new LinkedHashMap<String, List<Object>>(ProjectData);
 		Analogues.remove(predictedName);
 		
 		int index = 0;
@@ -207,7 +209,7 @@ public class DistanceDriver {
 		if(CAName == null || CAName == "") return 0;
 		List<Object> data = Analogues.get(CAName);
 		if(data.size() > 0){
-			Object tmp = Analogues.get(CAName).get(FeatureLength-1);
+			Object tmp = Analogues.get(CAName).get(FeatureLength);
 			if(tmp instanceof Double){
 				return (double)tmp;
 			}
@@ -228,10 +230,12 @@ public class DistanceDriver {
 		return Predicted;
 	}
 
-
+	public int getFeatureLength(){
+		return FeatureLength;
+	}
 
 	public Map<String, List<Object>> getDataset() {
-		return Analogues;
+		return ProjectData;
 	}
 
 	public void setWeights(double[] weights){

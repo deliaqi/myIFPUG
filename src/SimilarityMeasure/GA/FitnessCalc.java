@@ -14,7 +14,7 @@ public class FitnessCalc {
 	//static double[] solution = new double[64];
 	static double ActualEffort;
 	static DistanceDriver distanceDriver;
-	static double maxFitness = -0.5;
+	static double maxFitness = -0.56;
 	
 	/* Public methods */
 	// Set a candidate solution as a byte array
@@ -51,6 +51,7 @@ public class FitnessCalc {
 		
 		// Loop
 		for(String proName : ProjectData.keySet()){
+			distanceDriver.setWeights(individual.getGenes());
 			Map<String, Double> Distances = distanceDriver.process(proName);
 			
 			double CAEffort = distanceDriver.getCAEffort();
