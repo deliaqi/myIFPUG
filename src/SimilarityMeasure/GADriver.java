@@ -1,10 +1,25 @@
-package GA;
+package SimilarityMeasure;
 
-public class GATest {
+import java.util.List;
+import java.util.Map;
 
-	public static void main(String[] args) {
+import SimilarityMeasure.GA.Algorithm;
+import SimilarityMeasure.GA.FitnessCalc;
+import SimilarityMeasure.GA.Population;
+
+public class GADriver {
+	
+	private static DistanceDriver distanceDriver;
+//	private static double 
+	
+	
+	public GADriver(DistanceDriver distancedriver){
+		distanceDriver = distancedriver;
+	}
+	
+	public void process(double[] rawWeights) {
 		// Set a candidate solution
-		FitnessCalc.setSolution("1111000000000000000000000000000000000000000000000000000000001111");
+		FitnessCalc.setDistanceDriver(distanceDriver);
 
 		// Create an initial population
 		Population myPop = new Population(50, true);
@@ -22,5 +37,7 @@ public class GATest {
 		System.out.println(myPop.getFittest());
 
 	}
+	
+	
 
 }

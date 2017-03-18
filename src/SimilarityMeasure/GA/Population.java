@@ -1,12 +1,12 @@
-package GA;
+package SimilarityMeasure.GA;
 
 public class Population {
 
 	Individual[] individuals;
 
 	/*
-     * Constructors
-     */
+	 * Constructors
+	 */
 	// Create a population
 	public Population(int populationSize, boolean initialize) {
 		individuals = new Individual[populationSize];

@@ -1,9 +1,11 @@
-package GA;
+package simpleGA;
 
 public class Individual {
 
 	static int defaultGeneLength = 64;
 	private byte[] genes = new byte[defaultGeneLength];
+	//private double[] genes = new double[defaultGeneLength];
+	
 	// Cache
 	private int fitness = 0;
 	

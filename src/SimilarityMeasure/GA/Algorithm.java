@@ -1,10 +1,10 @@
-package GA;
+package SimilarityMeasure.GA;
 
 public class Algorithm {
 	/* GA parameters */
-	private static final double uniformRate = 0.5;
+	private static final double uniformRate = 0.5;// for crossover
 	private static final double mutationRate = 0.015;
-	private static final int tournamentSize = 5;
+	private static final int tournamentSize = 5;// for tournament selection
 	private static final boolean elitism = true;
 	
 	/* Public methods */
@@ -63,8 +63,8 @@ public class Algorithm {
 		// Loop through genes
 		for (int i = 0; i < indiv.size(); i++) {
 			if (Math.random() <= mutationRate) {
-				// Create random gene
-				byte gene = (byte) Math.round(Math.random());
+				// Create random gene : 1~10
+				double gene = (double) Math.round(Math.random() * 10);
 				indiv.setGene(i, gene);
 			}
 		}
