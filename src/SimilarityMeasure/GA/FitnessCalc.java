@@ -14,29 +14,9 @@ public class FitnessCalc {
 	//static double[] solution = new double[64];
 	static double ActualEffort;
 	static DistanceDriver distanceDriver;
-	static double maxFitness = -0.56;
+	static double maxFitness = 1;
 	
 	/* Public methods */
-	// Set a candidate solution as a byte array
-	/*static void setSolution(double[] newSolution){
-		solution = newSolution;
-	}*/
-	
-	// To make it easier we can use this method to set our candidate solution
-	// with string of 0s and 1s
-//	public static void setSolution(double[] newSolution){
-//		solution = new double[newSolution.length];
-//		// Loop through each character of our string and save it in our byte array
-//		for(int i=0; i<newSolution.length;i++){
-//			double weight = newSolution[i];
-//			if(weight > 0){
-//				solution[i] = weight;
-//			}else{
-//				solution[i] = 1;
-//			}
-//		}
-//		
-//	}
 	
 	public static void setDistanceDriver(DistanceDriver distancedriver){
 		distanceDriver = distancedriver;
@@ -68,11 +48,11 @@ public class FitnessCalc {
 		
 		// Evaluation
 		EvaluateMRE evaluation = new EvaluateMRE(MREs);
-		System.out.println("MMRE="+evaluation.getMMRE()+"MdMRE="+evaluation.getMdMRE()+
-				"Pred(0.25)="+evaluation.getPred()+"Pred(0.25)-MMRE="+(evaluation.getPred()-evaluation.getMMRE()));
+		//System.out.println("MMRE="+evaluation.getMMRE()+"MdMRE="+evaluation.getMdMRE()+
+			//	"Pred(0.25)="+evaluation.getPred()+"Pred(0.25)-MMRE="+(evaluation.getPred()-evaluation.getMMRE()));
 		
-		//fitness = evaluation.getPred() - evaluation.getMMRE();
-		fitness = -evaluation.getMMRE();
+		fitness = evaluation.getPred() - evaluation.getMMRE();
+		//fitness = -evaluation.getMMRE();
 		
 		return fitness;
 	}

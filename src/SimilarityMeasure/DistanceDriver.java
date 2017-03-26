@@ -60,7 +60,7 @@ public class DistanceDriver {
 	
 	public void TrainWeights(){
 		GADriver GAdriver = new GADriver(this);
-		GAdriver.process(Weights);
+		Weights = GAdriver.process(Weights);
 	}
 	
 	public double getActualEffort(){
@@ -163,10 +163,10 @@ public class DistanceDriver {
 					}
 					continue;
 				}
-				if(distances[i][j] > 1){
-					curNorm[j] = 1;
-					continue;
-				}
+//				if(distances[i][j] > 1){
+//					curNorm[j] = 1;
+//					continue;
+//				}
 				curNorm[j] = (distances[i][j]-MinMax.get(j)[0]) / Math.abs((MinMax.get(j)[1]-MinMax.get(j)[0]));
 			}
 			normDistance[i] = curNorm;
