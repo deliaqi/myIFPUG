@@ -13,11 +13,14 @@ import EvaluationMethod.MRE;
 import SimilarityMeasure.DistanceDriver;
 
 public class testDriver {
+	
+	public static double BASE_PRODUCTIVITY = 12;// person-hours/FP
 
 	public static void main(String[] args) throws IOException {
 		// for Reading Data
 		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\FP\\";
 		String suffix = ".xlsx";
+		
 		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
 		String[][] data = readData.readStringFromExcel(prePath+"maxwell"+suffix);
 		String[] titles = data[0];
@@ -70,10 +73,6 @@ public class testDriver {
 			double CAFP = (double)estimateDriver.getCAdata().get(0);
 			double actualFP = (double)estimateDriver.getPredicted().get(0);
 			
-//			double CAEffort = data4Estimation.get(CAname);
-//			double actualEffort = data4Estimation.get(name);
-//			double CAFP = (Double)data4Similarity.get(CAname).get(0);
-//			double actualFP = (Double)data4Similarity.get(name).get(0);
 			double productivity = CAEffort / CAFP;
 //			if(CAdistance>1){
 //				productivity = 10;

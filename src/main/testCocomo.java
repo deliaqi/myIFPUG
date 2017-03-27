@@ -11,10 +11,10 @@ public class testCocomo {
 		// TODO Auto-generated method stub
 		String prefix = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Cocomo\\";
 		String suffix = ".xlsx";
-		String dataName = "nasa93_use";
+		String dataName = "cocomonasa";
 		String datapath = prefix + dataName + suffix;
 		String EMpath = prefix + "EMValue" + suffix;
-		String resultpath = prefix + dataName +"_result" + suffix;
+		String resultpath = prefix + dataName +"_result_withEM" + suffix;
 		
 		COCOMO2.EMValueTable = COCOMO2.readEMValue(EMpath);
 		COCOMO2 cocomo2 = new COCOMO2();

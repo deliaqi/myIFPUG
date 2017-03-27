@@ -23,7 +23,7 @@ public class COCOMO2 {
 		
 		Map<String, List<Object>> usefulData = new LinkedHashMap<String, List<Object>>();
 		
-		// set column names 
+		// set column names
 		List<String> columnNames = new ArrayList<String>();
 		columnNames.add("OriginNum");
 		String[] titles = data[0];
