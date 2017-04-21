@@ -8,19 +8,22 @@ import java.util.Map;
 
 import DataProcessing.readData;
 import DataProcessing.writeData;
+import EvaluationMethod.MRE;
 
 public class COCOMO2 {
 	
 	public static Map<String, List<Double>> EMValueTable;
 	public static double A = 2.94;// for COCOMO II.2000
+	private List<MRE> MREs = new ArrayList<MRE>(); 
+	private String resultpath = "";
 	
-	public static void process(String path) throws IOException{
+	public void process(String path) throws IOException{
 		String data[][] = readData.readStringFromExcel(path);
 		if(data == null) return;
 		
 		Map<String, List<Object>> usefulData = new LinkedHashMap<String, List<Object>>();
 		
-		// set column names 
+		// set column names
 		List<String> columnNames = new ArrayList<String>();
 		columnNames.add("OriginNum");
 		String[] titles = data[0];
@@ -33,38 +36,59 @@ public class COCOMO2 {
 		
 		for(int i=1;i<data.length;i++){
 			String[] curdata = data[i];
+			MRE curMRE = null;
 			List<Object> curUSE = new ArrayList<Object>();
+			double estimationEffort,actualEffort;
 			for(int j=0;j<curdata.length;j++){
 				// add EM value
-				if(j == 15){
-					curUSE.add(Double.parseDouble(curdata[j]));continue;
-				}else if(j == 16){
+				if(j == 16){
 					curUSE.add(Double.parseDouble(curdata[j]));
-					curUSE.add(caculatePM((Double)curUSE.get(j-1),curUSE));
-					curUSE.add(Math.abs((Double)curUSE.get(j)-(Double)curUSE.get(j+1))/(Double)curUSE.get(j));
+					estimationEffort = caculatePM((Double)curUSE.get(j-1),curUSE);
+					actualEffort = (Double)curUSE.get(j);
+					curMRE = new MRE(actualEffort, estimationEffort);
+					curUSE.add(estimationEffort);
+					curUSE.add(curMRE.getRelativeError());
 					break;
 				}
-				List<Double> emvalues = EMValueTable.get(columnNames.get(j+1));
-				Double curemvalue;
-				switch(curdata[j]){
-				case "Very_Low": curemvalue = emvalues.get(0);break;
-				case "Low": curemvalue = emvalues.get(1);break;
-				case "Nominal": curemvalue = emvalues.get(2);break;
-				case "High": curemvalue = emvalues.get(3);break;
-				case "Very_High": curemvalue = emvalues.get(4);break;
-				case "Extra_High": curemvalue = emvalues.get(5);break;
-				default: curemvalue = Double.NaN;break;
+				
+				double curemvalue;
+				try{
+					curemvalue = Double.parseDouble(curdata[j]);
+				}catch(NumberFormatException e){
+					List<Double> emvalues = EMValueTable.get(columnNames.get(j+1).toUpperCase());
+					switch(curdata[j]){
+					case "Very_Low": curemvalue = emvalues.get(0);break;
+					case "vl": curemvalue = emvalues.get(0);break;
+					case "Low": curemvalue = emvalues.get(1);break;
+					case "l": curemvalue = emvalues.get(1);break;
+					case "Nominal": curemvalue = emvalues.get(2);break;
+					case "n": curemvalue = emvalues.get(2);break;
+					case "High": curemvalue = emvalues.get(3);break;
+					case "h": curemvalue = emvalues.get(3);break;
+					case "Very_High": curemvalue = emvalues.get(4);break;
+					case "vh": curemvalue = emvalues.get(4);break;
+					case "Extra_High": curemvalue = emvalues.get(5);break;
+					case "xh": curemvalue = emvalues.get(5);break;
+					default: curemvalue = Double.NaN;break;
+					}
 				}
+				
 				curUSE.add(curemvalue);
 			}
+			MREs.add(curMRE);
 			usefulData.put(i+"", curUSE);
 		}
 		
-		writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Cocomo\\cocomonasa_result.xlsx");
+		if(resultpath == "" || resultpath == null){
+			writeData.writeExcel(usefulData, columnNames, "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\Cocomo\\cocomonasa_result.xlsx");
+		}else{
+			writeData.writeExcel(usefulData, columnNames,resultpath);
+		}
+		
 		
 	}
 	
-	public static double caculatePM(double locsize, List<Object> emValues){
+	public double caculatePM(double locsize, List<Object> emValues){
 		Double pm = A * locsize;
 		for(int i=0;i<emValues.size();i++){
 			if(i == 15) break;
@@ -91,11 +115,17 @@ public class COCOMO2 {
 		}
 		return EMTable;
 	}
-	
-	public static void main(String[] args) throws IOException{
-		String path = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\cocomonasa.xlsx";
-		EMValueTable = readEMValue("C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\EMValue.xlsx");
-		process(path);
+
+	public List<MRE> getMREs() {
+		return MREs;
+	}
+
+	public String getResultpath() {
+		return resultpath;
+	}
+
+	public void setResultpath(String resultpath) {
+		this.resultpath = resultpath;
 	}
 
 }

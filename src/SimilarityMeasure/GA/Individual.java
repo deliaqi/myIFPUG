@@ -10,6 +10,8 @@ public class Individual {
 	
 	// Cache
 	private double fitness = 0;
+	private double MMRE = 0;
+	private double Pred = 0;
 	
 	// Create a randow individual
 	public void generateIndividual(){
@@ -33,6 +35,8 @@ public class Individual {
 	public void setGene(int index, double value){
 		genes[index] = value;
 		fitness = 0;
+		MMRE = 0;
+		Pred = 0;
 	}
 	
 	public double[] getGenes(){
@@ -53,9 +57,9 @@ public class Individual {
 
 	@Override
 	public String toString() {
-		String geneString = "-";
+		String geneString = "";
 		for(int i=0; i<size(); i++){
-			geneString += getGene(i) + "-";
+			geneString += (int)getGene(i) + ",";
 		}
 		return geneString;
 	}

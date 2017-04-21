@@ -28,7 +28,7 @@ public class EuclidianDistance extends Distance{
 	
 	// Funcrion Points RE
 	public double DoubleEuclidian(double predicted, double analogue){
-		return Math.abs(predicted-analogue)/predicted;
+		return Math.abs(predicted-analogue);
 	}
 	
 	public double StringEuclidian(String predicted, String analogue){
