@@ -18,7 +18,7 @@ public class testDriver {
 
 	public static void main(String[] args) throws IOException {
 		// for Reading Data
-		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\FP\\";
+		String prePath = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/FP/";
 		String suffix = ".xlsx";
 		
 		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);

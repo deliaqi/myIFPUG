@@ -9,7 +9,7 @@ import DataProcessing.cleanData;
 public class testCleanData {
 
 	public static void main(String[] args) throws IOException {
-		String prefix = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\ISBSG\\";
+		String prefix = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/ISBSG/";
 		String suffix = ".xlsx";
 		String dataName = "IFPUG4";
 		String sourcePath = prefix + dataName + suffix;
