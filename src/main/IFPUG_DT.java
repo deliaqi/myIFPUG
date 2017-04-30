@@ -14,7 +14,7 @@ public class IFPUG_DT {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\selfData\\";
+		String prePath = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/selfData/";
 		String suffix = ".xlsx";
 		List<Component> CList = new ArrayList<Component>();
 		

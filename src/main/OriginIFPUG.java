@@ -21,7 +21,7 @@ public class OriginIFPUG {
 	public static void main(String[] args){
 		try {
 			double FP = 0;
-			String prePath = "C:\\Users\\dell1\\Documents\\409\\FPA\\dataset\\";
+			String prePath = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/";
 			String[] Projectname = {"P2","P3"};
 			String suffix = ".xlsx";
 			int ProjectNum = Projectname.length;
