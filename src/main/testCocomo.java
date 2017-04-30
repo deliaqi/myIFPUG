@@ -9,7 +9,7 @@ public class testCocomo {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String prefix = "/Users/liujiaqi/OneDrive/文档/dataset/Cocomo/";
+		String prefix = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/Cocomo/";
 		String suffix = ".xlsx";
 		String dataName = "cocomonasa";
 		String datapath = prefix + dataName + suffix;
