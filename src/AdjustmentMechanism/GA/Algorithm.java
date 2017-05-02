@@ -63,8 +63,8 @@ public class Algorithm {
 		// Loop through genes
 		for (int i = 0; i < indiv.size(); i++) {
 			if (Math.random() <= mutationRate) {
-				// Create random gene : 1~10
-				double gene = (double) Math.round(Math.random() * 10);
+				// Create random gene : {0,1}
+				double gene = (double) Math.round(Math.random());
 				indiv.setGene(i, gene);
 			}
 		}

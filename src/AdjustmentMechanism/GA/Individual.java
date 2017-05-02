@@ -14,8 +14,8 @@ public class Individual {
 	// Create a randow individual
 	public void generateIndividual(){
 		for(int i = 0; i < size(); i++){
-			// Weight: 0~10
-			double gene = (double)Math.round(Math.random() * 10);
+			// Weight: {0，1}
+			double gene = (double)Math.round(Math.random());
 			genes[i] = gene;
 		}
 	}

@@ -83,8 +83,9 @@ public class AdjustmentDriver {
 		double predictedeffort = A * locsize;
 		// the first column is FP size, the last column is Effort
 		for(int i=1;i<Predicted.size()-1;i++){
+			if(Weights[i-1] == 0) continue;
 			if(Predicted.get(i) instanceof Double){
-				predictedeffort = predictedeffort * (Double)Predicted.get(i) * Weights[i-1];
+				predictedeffort = predictedeffort * (Double)Predicted.get(i);
 			}
 		}
 		return predictedeffort;

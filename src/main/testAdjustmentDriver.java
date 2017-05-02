@@ -48,7 +48,7 @@ public class testAdjustmentDriver {
 			data4Estimation.put(curName, Double.parseDouble(data[i][colNum-1]));
 		}
 		
-		System.out.println("Predicted,Prediction,MRE");
+		//System.out.println("Predicted,Prediction,MRE");
 		for(String name : data4Similarity.keySet()){
 			List<Object> Predicted = data4Similarity.get(name);
 			Map<String, List<Object>> Analogues = new LinkedHashMap<String, List<Object>>(data4Similarity);

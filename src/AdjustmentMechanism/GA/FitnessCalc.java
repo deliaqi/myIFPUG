@@ -18,7 +18,7 @@ public class FitnessCalc {
 	
 	/* Public methods */
 	
-	public static void setDistanceDriver(AdjustmentDriver adjustmentdriver){
+	public static void setAdjustmentDriver(AdjustmentDriver adjustmentdriver){
 		adjustmentDriver = adjustmentdriver;
 	}
 	
