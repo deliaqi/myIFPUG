@@ -8,7 +8,7 @@ import AdjustmentMechanism.GA.Population;
 public class GADriver {
 	
 	private static AdjustmentDriver adjustmentDriver;
-	public static  int MAX_Generation = 50;
+	public static  int MAX_Generation = 200;
 	
 	public GADriver(AdjustmentDriver adjustmentdriver){
 		adjustmentDriver = adjustmentdriver;
