@@ -1,4 +1,4 @@
-package AdjustmentMechanism.GA;
+package COCOMOGA.GA;
 
 public class Algorithm {
 	/* GA parameters */

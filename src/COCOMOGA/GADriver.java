@@ -1,9 +1,9 @@
-package AdjustmentMechanism;
+package COCOMOGA;
 
-import AdjustmentMechanism.GA.Algorithm;
-import AdjustmentMechanism.GA.FitnessCalc;
-import AdjustmentMechanism.GA.Individual;
-import AdjustmentMechanism.GA.Population;
+import COCOMOGA.GA.Algorithm;
+import COCOMOGA.GA.FitnessCalc;
+import COCOMOGA.GA.Individual;
+import COCOMOGA.GA.Population;
 
 public class GADriver {
 	

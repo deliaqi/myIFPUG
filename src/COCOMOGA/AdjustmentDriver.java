@@ -1,11 +1,7 @@
-package AdjustmentMechanism;
+package COCOMOGA;
 
-import SimilarityMeasure.EuclidianDistance;
-
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class AdjustmentDriver {
 	private List<Object> Predicted;

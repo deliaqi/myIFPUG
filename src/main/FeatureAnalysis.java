@@ -21,7 +21,7 @@ public class FeatureAnalysis {
 		String suffix = ".xlsx";
 		
 		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
-		String[][] data = readData.readStringFromExcel(prePath+"IFPUG4_3GL_Re-development_MF"+suffix);
+		String[][] data = readData.readStringFromExcel(prePath+"IFPUG4_4GL_New Development_MR"+suffix);
 		String[] titles = data[0];
 		
 		// for Evaluation

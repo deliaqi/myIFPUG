@@ -1,6 +1,6 @@
-package AdjustmentMechanism.GA;
+package COCOMOGA.GA;
 
-import AdjustmentMechanism.AdjustmentDriver;
+import COCOMOGA.AdjustmentDriver;
 import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
 

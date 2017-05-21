@@ -1,10 +1,9 @@
 package main;
 
-import AdjustmentMechanism.AdjustmentDriver;
+import COCOMOGA.AdjustmentDriver;
 import DataProcessing.readData;
 import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
-import SimilarityMeasure.DistanceDriver;
 
 import java.io.IOException;
 import java.util.ArrayList;

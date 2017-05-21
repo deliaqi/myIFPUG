@@ -12,7 +12,7 @@ import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
 import SimilarityMeasure.DistanceDriver;
 
-public class testDriver {
+public class testSimilarityGA {
 	
 	public static double BASE_PRODUCTIVITY = 12;// person-hours/FP
 
