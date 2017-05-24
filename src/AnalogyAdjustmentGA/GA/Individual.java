@@ -16,7 +16,7 @@ public class Individual {
 	private double Pred = 0;
 	
 	// Create a randow individual
-	public void generateIndividual(int seed){
+	public void generateIndividual(long seed){
 		// Language: 3GL 1.00~1.30;4GL 0.70~1.00
 		Random random = new Random(seed);
 		double gene_3GL = random.nextDouble()*0.3+1;

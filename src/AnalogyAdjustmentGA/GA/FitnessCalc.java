@@ -49,18 +49,18 @@ public class FitnessCalc {
 			// get Key Factors
 			keyfactorList = distanceDriver.getKeyFactorList();
 			// All KF
-			/*for(String keyfactor : keyfactorList.keySet()){
+			for(String keyfactor : keyfactorList.keySet()){
 				int tmp = keyfactorList.get(keyfactor);
 				if(tmp >= 0 && tmp < 8){
 					adjustmentMultiplier[tmp] = individual.getGene(tmp);
 				}
-			}*/
+			}
 
 			// KF1-Language
-			int kf1 = keyfactorList.get("Language");
-			if(kf1 >= 0 && kf1 < 8){
-				adjustmentMultiplier[kf1] = individual.getGene(kf1);
-			}
+//			int kf1 = keyfactorList.get("Language");
+//			if(kf1 >= 0 && kf1 < 8){
+//				adjustmentMultiplier[kf1] = individual.getGene(kf1);
+//			}
 
 			// KF2-Development Type
 //			int kf2 = keyfactorList.get("Development Type");
@@ -89,7 +89,7 @@ public class FitnessCalc {
 
 			double adjustFP = actualFP;
 			for(int i=0;i<adjustmentMultiplier.length;i++){
-				adjustFP = adjustFP/adjustmentMultiplier[i];
+				adjustFP = adjustFP * adjustmentMultiplier[i];
 			}
 
 			double prediction = productivity * adjustFP;
@@ -103,8 +103,8 @@ public class FitnessCalc {
 		//System.out.println("MMRE="+evaluation.getMMRE()+"MdMRE="+evaluation.getMdMRE()+
 			//	"Pred(0.25)="+evaluation.getPred()+"Pred(0.25)-MMRE="+(evaluation.getPred()-evaluation.getMMRE()));
 		
-		//fitness = evaluation.getPred() - evaluation.getMMRE();
-		fitness = -evaluation.getMMRE();
+		fitness = evaluation.getPred() - evaluation.getMMRE();
+		//fitness = -evaluation.getMMRE();
 		
 		return fitness;
 	}

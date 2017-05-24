@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abef6391-e2e1-450f-bcb2-e37cdf69cf1a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/Distance.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/EuclidianDistance.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/testAnalogyAdjustmentGA.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/AdjustmentDriver.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/AdjustmentDriver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/GA/Algorithm.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/GA/Algorithm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/GA/FitnessCalc.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/GA/FitnessCalc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/GA/Individual.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/GA/Individual.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/GA/Population.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/GA/Population.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/AdjustmentMechanism/GADriver.java" afterPath="$PROJECT_DIR$/src/COCOMOGA/GADriver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/testDriver.java" afterPath="$PROJECT_DIR$/src/main/testSimilarityGA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/FeatureAnalysis.java" afterPath="$PROJECT_DIR$/src/main/FeatureAnalysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/testAdjustmentDriver.java" afterPath="$PROJECT_DIR$/src/main/testAdjustmentDriver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/testCleanData.java" afterPath="$PROJECT_DIR$/src/main/testCleanData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java" afterPath="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +23,8 @@
       <file leaf-file-name="Distance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/Distance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -58,8 +43,8 @@
       <file leaf-file-name="testAnalogyAdjustmentGA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/testAnalogyAdjustmentGA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="49" column="80" lean-forward="true" selection-start-line="49" selection-start-column="80" selection-end-line="49" selection-end-column="80" />
+            <state relative-caret-position="258">
+              <caret line="57" column="48" lean-forward="false" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,16 +55,16 @@
       <file leaf-file-name="DistanceDriver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="168" column="87" lean-forward="true" selection-start-line="168" selection-start-column="87" selection-end-line="168" selection-end-column="87" />
+            <state relative-caret-position="-2489">
+              <caret line="77" column="28" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="28" />
               <folding>
                 <element signature="e#446#463#0" expanded="true" />
-                <element signature="e#8152#8153#0" expanded="true" />
-                <element signature="e#8179#8180#0" expanded="true" />
-                <element signature="e#8222#8223#0" expanded="true" />
-                <element signature="e#8253#8254#0" expanded="true" />
-                <element signature="e#8318#8319#0" expanded="true" />
-                <element signature="e#8362#8363#0" expanded="true" />
+                <element signature="e#8710#8711#0" expanded="true" />
+                <element signature="e#8737#8738#0" expanded="true" />
+                <element signature="e#8780#8781#0" expanded="true" />
+                <element signature="e#8811#8812#0" expanded="true" />
+                <element signature="e#8876#8877#0" expanded="true" />
+                <element signature="e#8920#8921#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,22 +73,22 @@
       <file leaf-file-name="EuclidianDistance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/EuclidianDistance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GADriver.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GADriver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+            <state relative-caret-position="270">
+              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
-                <element signature="e#468#469#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +97,8 @@
       <file leaf-file-name="Population.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+            <state relative-caret-position="360">
+              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -122,8 +107,8 @@
       <file leaf-file-name="Individual.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1027">
-              <caret line="82" column="26" lean-forward="true" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+            <state relative-caret-position="345">
+              <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,15 +116,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FitnessCalc.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FitnessCalc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="111" column="26" lean-forward="true" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
+            <state relative-caret-position="1470">
+              <caret line="106" column="42" lean-forward="false" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
               <folding>
-                <element signature="e#3249#3250#0" expanded="true" />
-                <element signature="e#3273#3274#0" expanded="true" />
+                <element signature="e#3255#3256#0" expanded="true" />
+                <element signature="e#3279#3280#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Algorithm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,13 +181,13 @@
         <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/SimilarityMeasure/GA/Individual.java" />
         <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/Distance.java" />
         <option value="$PROJECT_DIR$/src/main/testSimilarityGA.java" />
-        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java" />
-        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java" />
-        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java" />
-        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java" />
         <option value="$PROJECT_DIR$/src/main/testAnalogyAdjustmentGA.java" />
-        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java" />
+        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java" />
+        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java" />
+        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java" />
         <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java" />
+        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java" />
+        <option value="$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java" />
       </list>
     </option>
   </component>
@@ -694,7 +689,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="821" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -705,7 +699,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32712767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32712767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -717,7 +711,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34042552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45345744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -744,20 +738,8 @@
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java</url>
-          <line>31</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="22" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1086,14 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/Distance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/testSimilarityGA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
@@ -1110,30 +1084,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java">
+    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/Distance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/EuclidianDistance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/testAnalogyAdjustmentGA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="49" column="80" lean-forward="true" selection-start-line="49" selection-start-column="80" selection-end-line="49" selection-end-column="80" />
+        <state relative-caret-position="258">
+          <caret line="57" column="48" lean-forward="false" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1142,32 +1112,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/DistanceDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="168" column="87" lean-forward="true" selection-start-line="168" selection-start-column="87" selection-end-line="168" selection-end-column="87" />
+        <state relative-caret-position="-2489">
+          <caret line="77" column="28" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="28" />
           <folding>
             <element signature="e#446#463#0" expanded="true" />
-            <element signature="e#8152#8153#0" expanded="true" />
-            <element signature="e#8179#8180#0" expanded="true" />
-            <element signature="e#8222#8223#0" expanded="true" />
-            <element signature="e#8253#8254#0" expanded="true" />
-            <element signature="e#8318#8319#0" expanded="true" />
-            <element signature="e#8362#8363#0" expanded="true" />
+            <element signature="e#8710#8711#0" expanded="true" />
+            <element signature="e#8737#8738#0" expanded="true" />
+            <element signature="e#8780#8781#0" expanded="true" />
+            <element signature="e#8811#8812#0" expanded="true" />
+            <element signature="e#8876#8877#0" expanded="true" />
+            <element signature="e#8920#8921#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Population.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        <state relative-caret-position="360">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="106" column="42" lean-forward="false" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
+          <folding>
+            <element signature="e#3255#3256#0" expanded="true" />
+            <element signature="e#3279#3280#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Individual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1027">
-          <caret line="82" column="26" lean-forward="true" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        <state relative-caret-position="345">
+          <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1176,19 +1157,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/Algorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="73" column="39" lean-forward="false" selection-start-line="73" selection-start-column="39" selection-end-line="73" selection-end-column="39" />
+        <state relative-caret-position="135">
+          <caret line="9" column="49" lean-forward="true" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GA/FitnessCalc.java">
+    <entry file="file://$PROJECT_DIR$/src/AnalogyAdjustmentGA/GADriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="111" column="26" lean-forward="true" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
+        <state relative-caret-position="270">
+          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding>
-            <element signature="e#3249#3250#0" expanded="true" />
-            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
           </folding>
         </state>
       </provider>

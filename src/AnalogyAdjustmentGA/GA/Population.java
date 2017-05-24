@@ -16,7 +16,7 @@ public class Population {
 		if(initialize){
 			for(int i=0; i<size(); i++){
 				Individual newIndividual = new Individual();
-				newIndividual.generateIndividual(i*10);
+				newIndividual.generateIndividual(System.currentTimeMillis()+i*500);
 				saveIndividual(i, newIndividual);
 			}
 		}

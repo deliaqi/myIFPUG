@@ -7,7 +7,7 @@ public class Algorithm {
 	private static final double uniformRate = 0.5;// for crossover
 	private static final double mutationRate = 0.3;
 	private static final int tournamentSize = 5;// for tournament selection
-	private static final boolean elitism = true;
+	private static final boolean elitism = false;
 	
 	/* Public methods */
 	
@@ -68,7 +68,7 @@ public class Algorithm {
 				double gene = 1.0;
 				// Create random gene : 1~10
 
-				Random random = new Random(100);
+				Random random = new Random(System.currentTimeMillis()+i*500);
 				// Language: 3GL 1.00~1.30;4GL 0.70~1.00
 				if (i == 0) gene = random.nextDouble()*0.3+1;//3GL
 				else if(i == 1) gene = random.nextDouble()*0.3+0.7;//4GL

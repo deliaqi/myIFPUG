@@ -8,7 +8,7 @@ import AnalogyAdjustmentGA.GA.Population;
 public class GADriver {
 	
 	private static DistanceDriver distanceDriver;
-	public static int MAX_Generation = 50;
+	public static int MAX_Generation = 150;
 	//public static int KeyFactorCount = 3;
 //	private static double 
 	
@@ -28,7 +28,7 @@ public class GADriver {
 		// Evolve our population until we reach an optimum solution
 		System.out.println("Generation,Fittest,BestGenes");
 		int generationCount = 0;
-		while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness() || generationCount < MAX_Generation) {
+		while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness() && generationCount < MAX_Generation) {
 			generationCount++;
 			System.out.println(generationCount + "," + myPop.getBestFitness() + "," + myPop.getFittest().toString());
 			myPop = Algorithm.evolvePopulation(myPop);
@@ -36,7 +36,7 @@ public class GADriver {
 		System.out.println("Solution found!");
 		System.out.println("Generation: " + generationCount);
 		System.out.println("Genes:");
-		System.out.println(myPop.getFittest());
+		System.out.println(myPop.getFittest().toString());
 		return myPop.getFittest().getGenes();
 
 	}

@@ -87,7 +87,7 @@ public class DistanceDriver {
 		return 0;
 	}
 
-	public Map<String, Double> process(){
+	/*public Map<String, Double> process(){
 		double[][] distances = new double[Analogues.size()][];
 		int index = 0;
 		for(String analogue : Analogues.keySet()){
@@ -110,22 +110,24 @@ public class DistanceDriver {
 
 		return Distances;
 
-	}
+	}*/
 
 	public Map<String, Double> process(String predictedName){
 		double[][] distances = new double[DataSize-1][];
+		Map<String,double[]> distancesRecord = new LinkedHashMap<String,double[]>();
 
 		Predicted = ProjectData.get(predictedName);
 		Analogues = new LinkedHashMap<String, List<Object>>(ProjectData);
 		Analogues.remove(predictedName);
 
-		setKeyFactorList();
-
 		int index = 0;
 		for(String analogue : Analogues.keySet()){
 			EuclidianDistance ED = new EuclidianDistance(Predicted, Analogues.get(analogue));
 			distances[index++] = ED.getDistance();
+			distancesRecord.put(analogue,ED.getDistance());
 		}
+
+
 		distances = normalizeDistance(distances);
 		Distances = new LinkedHashMap<String, Double>();
 		index = 0;
@@ -139,46 +141,62 @@ public class DistanceDriver {
 		}
 
 		CAName = getMinDistance();
+		double[] CAdistance = distancesRecord.get(CAName);
+
+		setKeyFactorList(CAdistance[3],CAdistance[4],CAdistance[5]);
 
 		return Distances;
 
 	}
 
-	public void setKeyFactorList(){
+	public void setKeyFactorList(double DTdistance,double DPdistance,double LTdistance){
 		//	genes[0] = gene_3GL;
-//	genes[1] = gene_4GL;
-//	genes[2] = gene_PC;
-//	genes[3] = gene_MR;
-//	genes[4] = gene_MF;
-//	genes[5] = gene_En;
-//	genes[6] = gene_ND;
-//	genes[7] = gene_RD;
-
-
+		//	genes[1] = gene_4GL;
+		//	genes[2] = gene_PC;
+		//	genes[3] = gene_MR;
+		//	genes[4] = gene_MF;
+		//	genes[5] = gene_En;
+		//	genes[6] = gene_ND;
+		//	genes[7] = gene_RD;
 		if(Predicted == null || Predicted.size() < 11) return;
 
-		// get and save Language
-		String language = (String) Predicted.get(5);
-		if(language.equalsIgnoreCase("3GL")) KeyFactorList.put("Language", 0);
+		if(DTdistance != 0){
+			// get and save Development Type
+			String DT = (String) Predicted.get(3);
+			if(DT.equalsIgnoreCase("Enhancement")) KeyFactorList.put("Development Type",5);
+			else if(DT.equalsIgnoreCase("New Development")) KeyFactorList.put("Development Type",6);
+			else if(DT.equalsIgnoreCase("Re-development")) KeyFactorList.put("Development Type",7);
+			else KeyFactorList.put("Development Type",-1);
+		}else{
+			KeyFactorList.put("Development Type",-1);
+		}
 
-		else if(language.equalsIgnoreCase("4GL")) KeyFactorList.put("Language",1);
-		else KeyFactorList.put("Language",-1);
-		// get and save Development Platform
-		String DP = (String) Predicted.get(4);
-		if(DP.equalsIgnoreCase("PC")) KeyFactorList.put("Development Platform",2);
-		else if(DP.equalsIgnoreCase("MR")) KeyFactorList.put("Development Platform",3);
-		else if(DP.equalsIgnoreCase("MF")) KeyFactorList.put("Development Platform",4);
-		else KeyFactorList.put("Development Platform",-1);
-		// get and save Development Type
-		String DT = (String) Predicted.get(3);
-		if(DT.equalsIgnoreCase("Enhancement")) KeyFactorList.put("Development Type",5);
-		else if(DT.equalsIgnoreCase("New Development")) KeyFactorList.put("Development Type",6);
-		else if(DT.equalsIgnoreCase("Re-development")) KeyFactorList.put("Development Type",7);
-		else KeyFactorList.put("Development Type",-1);
+		if(DPdistance != 0){
+			// get and save Development Platform
+			String DP = (String) Predicted.get(4);
+			if(DP.equalsIgnoreCase("PC")) KeyFactorList.put("Development Platform",2);
+			else if(DP.equalsIgnoreCase("MR")) KeyFactorList.put("Development Platform",3);
+			else if(DP.equalsIgnoreCase("MF")) KeyFactorList.put("Development Platform",4);
+			else KeyFactorList.put("Development Platform",-1);
+		}else{
+			KeyFactorList.put("Development Platform",-1);
+		}
+
+		if(LTdistance != 0){
+			// get and save Language
+			String language = (String) Predicted.get(5);
+			if(language.equalsIgnoreCase("3GL")) KeyFactorList.put("Language", 0);
+
+			else if(language.equalsIgnoreCase("4GL")) KeyFactorList.put("Language",1);
+			else KeyFactorList.put("Language",-1);
+		}else{
+			KeyFactorList.put("Language",-1);
+		}
+
 
 	}
 
-	public Map<String, Double> process(double[] Weights){
+	/*public Map<String, Double> process(double[] Weights){
 		double[][] distances = new double[Analogues.size()][];
 		int index = 0;
 		for(String analogue : Analogues.keySet()){
@@ -201,7 +219,7 @@ public class DistanceDriver {
 		
 		return Distances;
 		
-	}
+	}*/
 	
 	public double[][] normalizeDistance(double[][] distances){
 		Map<Integer, double[]> MinMax = findMinMax(distances);
