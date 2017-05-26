@@ -1,18 +1,17 @@
 package main;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import DataProcessing.readData;
 import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
 import SimilarityMeasure.DistanceDriver;
 
-public class testSimilarityGA {
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class testIFPUGGA {
 	
 	public static double BASE_PRODUCTIVITY = 12;// person-hours/FP
 
@@ -55,42 +54,52 @@ public class testSimilarityGA {
 		//DistanceDriver trainDriver = new DistanceDriver(data4Similarity);
 		//trainDriver.TrainWeights();
 		
-		System.out.println("Predicted,CA,Distance,Productivity,Prediction,MRE");
+		System.out.println("Predicted,ActualProductivity,FP,ActualEffort,Prediction,MRE");
 		for(String name : data4Similarity.keySet()){
 			List<Object> Predicted = data4Similarity.get(name);
 			Map<String, List<Object>> Analogues = new LinkedHashMap<String, List<Object>>(data4Similarity);
 			Analogues.remove(name);
 			DistanceDriver estimateDriver = new DistanceDriver(Predicted, Analogues);
 			
-			// using GA to train Weights of each features for Similarity Measure
-			//DistanceDriver trainDriver = new DistanceDriver(data4Similarity);
-			//trainDriver.TrainWeights();
-			//estimateDriver.setWeights(trainDriver.getWeights());
-			
-			Map<String, Double> Distances = estimateDriver.process();
-			String CAname = estimateDriver.getMinDistance();
-			double CAdistance = Distances.get(CAname);
+			//Map<String, Double> Distances = estimateDriver.process();
+			//String CAname = estimateDriver.getMinDistance();
+			//double CAdistance = Distances.get(CAname);
 			
 			// Estimation
-			double CAEffort = estimateDriver.getCAEffort();
+			//double CAEffort = estimateDriver.getCAEffort();
 			double actualEffort = estimateDriver.getActualEffort();
-			double CAFP = (double)estimateDriver.getCAdata().get(0);
+			//double CAFP = (double)estimateDriver.getCAdata().get(0);
 			double actualFP = (double)estimateDriver.getPredicted().get(0);
 			
-			double productivity = CAEffort / CAFP;
-//			if(CAdistance>1){
-//				productivity = 10;
-//			}
-//			if(productivity < 5 || productivity > 20){
-//				productivity = 10;
-//			}
-			double prediction = productivity * actualFP;
+			double productivity = actualEffort / actualFP;
+			double AFP = actualFP;
+
+			// Adjust FP
+			// by Development Type
+			String DT = (String) Predicted.get(4);
+			if(DT.equalsIgnoreCase("'New Development'")) AFP = AFP * 0.857;
+			else if(DT.equalsIgnoreCase("Re-development")) AFP = AFP * 0.863;
+			else if(DT.equalsIgnoreCase("Enhancement")) AFP = AFP * 0.857;
+			// by Language Type
+			String language = (String) Predicted.get(6);
+			if(language.equalsIgnoreCase("3GL")) AFP = AFP * 1.06;
+			else if(language.equalsIgnoreCase("4GL")) AFP = AFP * 0.87;
+			// by Development Platform
+			String DP = (String) Predicted.get(5);
+			if(DP.equalsIgnoreCase("PC")) AFP = AFP * 0.61;
+			else if(DP.equalsIgnoreCase("MR")) AFP = AFP * 1.01;
+			else if(DP.equalsIgnoreCase("MF")) AFP = AFP * 1.06;
+
+			//double prediction = BASE_PRODUCTIVITY * AFP;
+
+			double prediction = BASE_PRODUCTIVITY * actualFP;
 			MRE curMRE = new MRE(actualEffort, prediction);
 			MREs.add(curMRE);
 			Productivity.add(productivity);
 			
-			System.out.println(name+","+CAname+","+String.format("%.2f", CAdistance)+","+String.format("%.2f", productivity)
-					+","+String.format("%.2f", prediction)+","+String.format("%.2f", curMRE.getRelativeError()));
+			System.out.println(name+","+String.format("%.2f", productivity)+","+String.format("%.2f", actualFP)
+					+","+String.format("%.2f", actualEffort)+","+String.format("%.2f", prediction)+","
+					+String.format("%.2f", curMRE.getRelativeError()));
 			
 		}
 		
