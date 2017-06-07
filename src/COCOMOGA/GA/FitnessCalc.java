@@ -1,6 +1,6 @@
-package AdjustmentMechanism.GA;
+package COCOMOGA.GA;
 
-import AdjustmentMechanism.AdjustmentDriver;
+import COCOMOGA.AdjustmentDriver;
 import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
 
@@ -18,7 +18,7 @@ public class FitnessCalc {
 	
 	/* Public methods */
 	
-	public static void setDistanceDriver(AdjustmentDriver adjustmentdriver){
+	public static void setAdjustmentDriver(AdjustmentDriver adjustmentdriver){
 		adjustmentDriver = adjustmentdriver;
 	}
 	

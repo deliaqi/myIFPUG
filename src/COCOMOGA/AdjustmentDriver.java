@@ -1,11 +1,7 @@
-package AdjustmentMechanism;
+package COCOMOGA;
 
-import SimilarityMeasure.EuclidianDistance;
-
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class AdjustmentDriver {
 	private List<Object> Predicted;
@@ -83,8 +79,9 @@ public class AdjustmentDriver {
 		double predictedeffort = A * locsize;
 		// the first column is FP size, the last column is Effort
 		for(int i=1;i<Predicted.size()-1;i++){
+			if(Weights[i-1] == 0) continue;
 			if(Predicted.get(i) instanceof Double){
-				predictedeffort = predictedeffort * (Double)Predicted.get(i) * Weights[i-1];
+				predictedeffort = predictedeffort * (Double)Predicted.get(i);
 			}
 		}
 		return predictedeffort;

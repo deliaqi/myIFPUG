@@ -1,13 +1,14 @@
-package AdjustmentMechanism;
+package COCOMOGA;
 
-import AdjustmentMechanism.GA.Algorithm;
-import AdjustmentMechanism.GA.FitnessCalc;
-import AdjustmentMechanism.GA.Individual;
-import AdjustmentMechanism.GA.Population;
+import COCOMOGA.GA.Algorithm;
+import COCOMOGA.GA.FitnessCalc;
+import COCOMOGA.GA.Individual;
+import COCOMOGA.GA.Population;
 
 public class GADriver {
 	
 	private static AdjustmentDriver adjustmentDriver;
+	public static  int MAX_Generation = 200;
 	
 	public GADriver(AdjustmentDriver adjustmentdriver){
 		adjustmentDriver = adjustmentdriver;
@@ -15,16 +16,16 @@ public class GADriver {
 	
 	public double[] process(double[] rawWeights) {
 		// Set a candidate solution
-		FitnessCalc.setDistanceDriver(adjustmentDriver);
+		FitnessCalc.setAdjustmentDriver(adjustmentDriver);
 		Individual.setDefaultGeneLength(adjustmentDriver.getFeatureLength());
 
 		// Create an initial population
 		Population myPop = new Population(50, true);
 		
 		// Evolve our population until we reach an optimum solution
-		System.out.println("Generation,Fittest,BestGenes");
+		System.out.println("Generation,Fittest,RELY,DATA,CPLX,TIME,STOR,VIRT,TURN,ACAP,AEXP,PCAP,VEXP,LEXP,MODP,TOOL,SCED");
 		int generationCount = 0;
-		while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness()) {
+		while (myPop.getFittest().getFitness() < FitnessCalc.getMaxFitness() && generationCount < MAX_Generation) {
 			generationCount++;
 			System.out.println(generationCount + "," + myPop.getBestFitness() + "," + myPop.getFittest().toString());
 			myPop = Algorithm.evolvePopulation(myPop);

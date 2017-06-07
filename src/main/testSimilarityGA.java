@@ -12,17 +12,17 @@ import EvaluationMethod.EvaluateMRE;
 import EvaluationMethod.MRE;
 import SimilarityMeasure.DistanceDriver;
 
-public class testDriver {
+public class testSimilarityGA {
 	
 	public static double BASE_PRODUCTIVITY = 12;// person-hours/FP
 
 	public static void main(String[] args) throws IOException {
 		// for Reading Data
-		String prePath = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/FP/";
+		String prePath = "/Users/liujiaqi/OneDrive/文档/毕设/FPA/dataset/ISBSG/";
 		String suffix = ".xlsx";
 		
 		//String[][] data = readData.readStringFromExcel(prePath+"clean_DT_LT"+suffix);
-		String[][] data = readData.readStringFromExcel(prePath+"maxwell"+suffix);
+		String[][] data = readData.readStringFromExcel(prePath+"isbsg10_use18"+suffix);
 		String[] titles = data[0];
 		
 		// for Evaluation
@@ -50,6 +50,10 @@ public class testDriver {
 			data4Similarity.put(curName, curData);
 			data4Estimation.put(curName, Double.parseDouble(data[i][colNum-1]));
 		}
+
+		// using GA to train Weights of each features for Similarity Measure
+		//DistanceDriver trainDriver = new DistanceDriver(data4Similarity);
+		//trainDriver.TrainWeights();
 		
 		System.out.println("Predicted,CA,Distance,Productivity,Prediction,MRE");
 		for(String name : data4Similarity.keySet()){

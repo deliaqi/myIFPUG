@@ -22,7 +22,11 @@ public class EvaluateMRE {
 		this.caculateMdMRE(MREs);
 		this.caculatePred(MREs, PredAccuracy);
 	}
-	
+
+	public EvaluateMRE() {
+		super();
+	}
+
 	public void initMREs(List<MRE> listMRE){
 		int size = listMRE.size();
 		MREs = new double[size];
